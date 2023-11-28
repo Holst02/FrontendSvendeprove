@@ -5,7 +5,7 @@ import LoginPage from '../Pages/loginPage';
 
 function Login() {
 
-    const { loggedIn, username, password, login } = useContext(AuthContext);
+    const { loggedIn, username, password, login, setUsername, setPassword, setUserid } = useContext(AuthContext);
 
     const [error, setError] = useState('');
 
@@ -16,6 +16,10 @@ function Login() {
             'userName': username,
             'password': password
         }
+
+        // Clear variables after validation
+        setUsername('');
+        setPassword('');
 
         const validateUser = async (userData) => {
             const response = await fetch(`https://svendeprovecorewebapp.azurewebsites.net/inventiouser/validate`, {
@@ -29,16 +33,17 @@ function Login() {
               console.error(error.message);
             });
 
-            const data = await response;
-
-            if (data.ok) {
-                login();
-            } else if (!data.ok) {
+            try {
+                var data = await response.json(); 
+            } catch (error) {
                 setError('Invalid username or password');
             }
-            
-        }
 
+            if (response.ok) {
+                setUserid(data.id)
+                login();
+            }
+        }
 
         validateUser(userObject)
     }

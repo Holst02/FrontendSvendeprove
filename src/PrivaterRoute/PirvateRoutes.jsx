@@ -3,7 +3,7 @@ import AuthContext from './AuthContext';
 import Dashboard from '../Pages/dashboard';
 import Login from './login';
 
-function PrivateRoutes({children, ...rest}) {
+function PrivateRoutes() {
     const { status } = useContext(AuthContext);
 
     return(

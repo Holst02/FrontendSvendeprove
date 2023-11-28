@@ -7,6 +7,7 @@ import PrivateRoutes from './PrivaterRoute/PirvateRoutes';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [userid, setUserid] = useState(null);
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
 
@@ -14,11 +15,15 @@ function App() {
     setLoggedIn(true);
   }
 
+  const logout = () => {
+    setLoggedIn(false);
+  }
+
   return (
     <Router>
-      <AuthContext.Provider value={{ loggedIn, username, password, setUsername, setPassword, login }}>
-        <PrivateRoutes />
-        {/* <Dashboard /> */}
+      <AuthContext.Provider value={{ loggedIn, username, password, setUsername, setPassword, setUserid, login, logout }}>
+        {/* <PrivateRoutes /> */}
+        <Dashboard />
       </AuthContext.Provider>
     </Router>
   )
