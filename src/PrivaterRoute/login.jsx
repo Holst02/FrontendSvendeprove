@@ -5,7 +5,7 @@ import LoginPage from '../Pages/loginPage';
 
 function Login() {
 
-    const { loggedIn, username, password, login, setUsername, setPassword, setUserid } = useContext(AuthContext);
+    const { loggedIn, username, password, login, setUserid } = useContext(AuthContext);
 
     const [error, setError] = useState('');
 
@@ -13,13 +13,9 @@ function Login() {
         event.preventDefault();
 
         const userObject = {
-            'userName': username,
-            'password': password
+            "userName": username,
+            "password": password
         }
-
-        // Clear variables after validation
-        setUsername('');
-        setPassword('');
 
         const validateUser = async (userData) => {
             const response = await fetch(`https://svendeprovecorewebapp.azurewebsites.net/inventiouser/validate`, {
@@ -34,7 +30,7 @@ function Login() {
             });
 
             try {
-                var data = await response.json(); 
+                var data = await response.json();
             } catch (error) {
                 setError('Invalid username or password');
             }

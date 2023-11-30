@@ -16,14 +16,17 @@ function App() {
   }
 
   const logout = () => {
+    setUserid('');
+    setUsername('');
+    setPassword('');
     setLoggedIn(false);
   }
 
   return (
     <Router>
-      <AuthContext.Provider value={{ loggedIn, username, password, setUsername, setPassword, setUserid, login, logout }}>
-        {/* <PrivateRoutes /> */}
-        <Dashboard />
+      <AuthContext.Provider value={{ loggedIn, userid, username, password, setUsername, setPassword, setUserid, login, logout }}>
+        <PrivateRoutes />
+        {/* <Dashboard /> */}
       </AuthContext.Provider>
     </Router>
   )

@@ -3,6 +3,7 @@ import Container from '@mui/material/Container';
 import { Button } from '@mui/material';
 import AuthContext from '../PrivaterRoute/AuthContext';
 import CustomerList from '../Components/CustomerList';
+import SMARTProductList from '../Components/SMARTProductList';
 
 function Dashboard() {
 
@@ -17,6 +18,12 @@ function Dashboard() {
         <Container>
           
           <CustomerList />
+
+          <br></br>
+
+          <SMARTProductList />
+
+          <br></br>
 
           <Button
             variant='contained'
