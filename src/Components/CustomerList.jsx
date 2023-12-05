@@ -12,8 +12,8 @@ const columns = [
     { field: 'users', headerName: 'Users', flex: 1},
   ];
 
-function CustomerList() {
-    const [customers, setCustomers] = useState([]);
+function CustomerList(props) {
+    const { customers, setCustomers } = props
     const [modalOpen, setModalOpen] = useState(false);
     const [customerData, setCustomerData] = useState({});
 

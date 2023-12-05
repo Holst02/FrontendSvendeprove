@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import Modal from '@mui/material/Modal';
-import { Container, Paper, TextField, Button, Stack } from '@mui/material';
+import { Container, Paper, TextField, Button, Stack, Select, MenuItem } from '@mui/material';
 import AuthContext from '../PrivaterRoute/AuthContext';
 
 function CustomerModal(props) {
@@ -48,13 +48,13 @@ function CustomerModal(props) {
                     <Stack spacing={2}>
                         <h1>Edit companydata</h1>
                         <TextField
-                            id="virksomhedsnavn"
-                            label="Virksomhedsnavn"
-                            name="Virksomhedsnavn"
-                            value={customerData.virksomhedsnavn}
+                            id="companyname"
+                            label="Company Name"
+                            name="Companyname"
+                            value={customerData.companyName}
                             onChange={e => setCustomerData({
                                 ...customerData, 
-                                virksomhedsnavn: e.target.value
+                                companyName: e.target.value
                             })}
                             fullWidth
                             required
@@ -72,43 +72,57 @@ function CustomerModal(props) {
                             required
                         />
                         <TextField
-                            id="cvrNummer"
-                            label="CVRNummer"
-                            name="CVRNummer"
-                            value={customerData.cvrNummer}
+                            id="cvrNumber"
+                            label="CVRNumber"
+                            name="CVRNumber"
+                            value={customerData.cvrNumber}
                             onChange={e => setCustomerData({
                                 ...customerData, 
-                                cvrNummer: e.target.value
+                                cvrNumber: e.target.value
                             })}
                             fullWidth
                             required
                         />
-                        {/* Make option so only Active, Deactivated and ???? */}
                         <TextField
-                            id="status"
-                            label="Status"
-                            name="Status"
-                            value={customerData.status}
+                            id="country"
+                            label="Country"
+                            name="Country"
+                            value={customerData.country}
                             onChange={e => setCustomerData({
                                 ...customerData, 
+                                country: e.target.value
+                            })}
+                            fullWidth
+                            required
+                        />
+                        <Select
+                            id="status"
+                            value={customerData.status}
+                            label="Status"
+                            onChange={e => setCustomerData({
+                                ...customerData,
                                 status: e.target.value
                             })}
-                            fullWidth
                             required
-                        />
-                        {/* Make option so only Essential, basic and premium is choices */}
-                        <TextField
-                            id="licenstype"
-                            label="Licensetype"
-                            name="Licensetype"
+                        >
+                            <MenuItem value={"Active"}>Active</MenuItem>
+                            <MenuItem value={"Inactive"}>Inactive</MenuItem>
+                            <MenuItem value={"Blocked"}>Blocked</MenuItem>
+                        </Select>
+                        <Select
+                            id="licensetype"
                             value={customerData.licenstype}
+                            label="License type"
                             onChange={e => setCustomerData({
-                                ...customerData, 
+                                ...customerData,
                                 licenstype: e.target.value
                             })}
-                            fullWidth
                             required
-                        />
+                        >
+                            <MenuItem value={"Essentials"}>Essentials</MenuItem>
+                            <MenuItem value={"Basic"}>Basic</MenuItem>
+                            <MenuItem value={"Premium"}>Premium</MenuItem>
+                        </Select>
 
                         <Button type="submit" variant='contained'>Save</Button>
                     </Stack>

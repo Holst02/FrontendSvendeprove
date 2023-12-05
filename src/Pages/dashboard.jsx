@@ -1,37 +1,28 @@
-import { useContext } from 'react';
 import Container from '@mui/material/Container';
-import { Button } from '@mui/material';
-import AuthContext from '../PrivaterRoute/AuthContext';
+import { useState } from 'react';
 import CustomerList from '../Components/CustomerList';
 import SMARTProductList from '../Components/SMARTProductList';
+import Topbar from '../Components/Topbar';
+import CustomersChart from '../Components/CustomersChart';
 
 function Dashboard() {
-
-  const { logout } = useContext(AuthContext);
-
-  const handleLogout = () => {
-    logout();
-  }
+  const [customers, setCustomers] = useState([]);
 
   return (
     <>
+        <Topbar />
         <Container>
           
-          <CustomerList />
+          <CustomerList customers={customers} setCustomers={setCustomers} />
 
           <br></br>
-
+          
           <SMARTProductList />
 
           <br></br>
 
-          <Button
-            variant='contained'
-            type='submit'
-            onClick={handleLogout}
-          >
-            Logout
-          </Button>
+          <CustomersChart customers={customers} />
+
         </Container>
     </>
   )
