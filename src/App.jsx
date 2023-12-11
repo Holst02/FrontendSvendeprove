@@ -24,9 +24,18 @@ function App() {
 
   return (
     <Router>
-      <AuthContext.Provider value={{ loggedIn, userid, username, password, setUsername, setPassword, setUserid, login, logout }}>
+      <AuthContext.Provider value={{ 
+        loggedIn, 
+        userid, 
+        username, 
+        password, 
+        setUsername, 
+        setPassword, 
+        setUserid, 
+        login, 
+        logout 
+        }}>
         <PrivateRoutes />
-        {/* <Dashboard /> */}
       </AuthContext.Provider>
     </Router>
   )

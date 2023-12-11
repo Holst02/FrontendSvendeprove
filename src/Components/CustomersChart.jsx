@@ -35,7 +35,7 @@ function CustomersChart(props) {
                 const sortedCustomersData = customersData.sort(sortByDate)
                 let sumTotalUsers = 0;
 
-                // Calculate the cumulative sum of users
+                // Sum of users
                 const cumulativeTotalUsers = sortedCustomersData.map((customer) => {
                     sumTotalUsers += customer.users;
                     return sumTotalUsers;

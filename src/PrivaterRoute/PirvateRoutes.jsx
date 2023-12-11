@@ -4,11 +4,11 @@ import Dashboard from '../Pages/dashboard';
 import Login from './login';
 
 function PrivateRoutes() {
-    const { status } = useContext(AuthContext);
+    const { loggedIn } = useContext(AuthContext);
 
     return(
         <>
-            {status ? <Dashboard /> : <Login /> }
+            {loggedIn ? <Dashboard /> : <Login /> }
         </>
     )
 }
